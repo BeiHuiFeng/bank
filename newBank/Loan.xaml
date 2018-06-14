@@ -1,0 +1,133 @@
+﻿<Page
+    x:Class="newBank.Loan"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:newBank"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Button Grid.Column="0" Content="Apply" Click="BtnClickApply" Background="White" 
+                    Margin="4, 4, 4, 4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Button Grid.Column="1" Content="Loans" Click="BtnClickLoans" Background="White" 
+                    Margin="4, 4, 4, 4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Button Grid.Column="2" Content="Delete" Click="BtnClickDel" Background="White" 
+                    Margin="4, 4, 4, 4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Button Grid.Column="3" Content="Query" Click="BtnClickQue" Background="White" 
+                    Margin="4, 4, 4, 4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+        <TextBox x:Name="TxtLNum" Text="loan number" Foreground="Gray"
+                 Grid.Column="0" Grid.Row="1" Height="32" Margin="4, 4, 4, 4"/>
+        <TextBox x:Name="TxtTPay" Text="total payment" Foreground="Gray" 
+                 Grid.Column="1" Grid.Row="1" Height="32" Margin="4, 4, 4, 4"/>
+        <TextBox x:Name="TxtBName" Text="branch name" Foreground="Gray" 
+                 Grid.Column="2" Grid.Row="1" Height="32" Margin="4, 4, 4, 4"/>
+        <TextBox x:Name="TxtCID" Text="client ID" Foreground="Gray" 
+                 Grid.Column="3" Grid.Row="1" Height="32" Margin="4, 4, 4, 4"/>
+
+        <ListView Grid.Row="2" Grid.ColumnSpan="4" x:Name="LoanListView" ItemsSource="{Binding}" Width="Auto" ItemClick="LoanListView_ItemClick" IsItemClickEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:LoanListItem">
+                    <Grid Width="800">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind loanNum}" Grid.Column="0" HorizontalAlignment="center" Margin="4,2,2,4" 
+                                   VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri"/>
+
+                        <TextBlock Text="{x:Bind totalPay}" Grid.Column="1" HorizontalAlignment="center" 
+                                   Margin="4,2,2,4" VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+                        
+                        <TextBlock Text="{x:Bind BName}" Grid.Column="2" HorizontalAlignment="center" Margin="4,2,2,4" 
+                                   VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+
+                        <TextBlock Text="{x:Bind CID}" Grid.Column="3" HorizontalAlignment="center" 
+                                   Margin="4,2,2,4" VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ScrollViewer Grid.Row="3" Grid.ColumnSpan="6" VerticalScrollBarVisibility="Auto" >
+            <TextBlock x:Name="TxtAlert"  
+                   Text="Ready"
+                   FontSize="15" 
+                   Foreground="Gray"
+                   FontFamily="Calibri"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Center" 
+                   Margin="0, 0, 20, 0" 
+                   TextWrapping="WrapWholeWords"/>
+        </ScrollViewer>
+
+        <ListView Grid.Row="4" Grid.ColumnSpan="4" x:Name="SLoanListView" ItemsSource="{Binding}" Width="Auto" ItemClick="SLoanListView_ItemClick" IsItemClickEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:SLoanListItem">
+                    <Grid Width="800">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind LNum}" Grid.Column="0" HorizontalAlignment="center" Margin="4,2,2,4" 
+                                   VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri"/>
+
+                        <TextBlock Text="{x:Bind SLNum}" Grid.Column="1" HorizontalAlignment="center" 
+                                   Margin="4,2,2,4" VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+                        
+                        <TextBlock Text="{x:Bind pay}" Grid.Column="2" HorizontalAlignment="center" 
+                                   Margin="4,2,2,4" VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+                        
+                        <TextBlock Text="{x:Bind TotalPay}" Grid.Column="3" HorizontalAlignment="center" 
+                                   Margin="4,2,2,4" VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+
+                        <TextBlock Text="{x:Bind date}" Grid.Column="4" HorizontalAlignment="center" 
+                                   Margin="4,2,2,4" VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ScrollViewer Grid.Row="5" Grid.ColumnSpan="6" VerticalScrollBarVisibility="Auto" >
+            <TextBlock x:Name="_TxtAlert"  
+                   Text="Ready"
+                   FontSize="15" 
+                   Foreground="Gray"
+                   FontFamily="Calibri"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Center" 
+                   Margin="0, 0, 20, 0" 
+                   TextWrapping="WrapWholeWords"/>
+        </ScrollViewer>
+    </Grid>
+</Page>

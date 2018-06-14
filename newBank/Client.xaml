@@ -1,0 +1,116 @@
+﻿<Page
+    x:Class="newBank.Client"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:newBank"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="0" Content="Add" Click="BtnClickAdd" Background="White" 
+                    Margin="4, 4, 4, 4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Button Grid.Column="1" Content="Delete" Click="BtnClickDel" Background="White" 
+                    Margin="4, 4, 4, 4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Button Grid.Column="2" Content="Update" Click="BtnClickUpd" Background="White" 
+                    Margin="4, 4, 4, 4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Button Grid.Column="3" Content="Query" Click="BtnClickQue" Background="White" 
+                    Margin="4, 4, 4, 4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+
+        <TextBox x:Name="TxtCltID" Text="client ID" Foreground="Gray" 
+                 Grid.Column="0" Grid.Row="1" Height="32" Margin="4, 4, 4, 4"/>
+        <TextBox x:Name="TxtCltName" Text="client name" Foreground="Gray" 
+                 Grid.Column="1" Grid.Row="1" Height="32" Margin="4, 4, 4, 4"/>
+        <TextBox x:Name="TxtCltPhone" Text="client phone" Foreground="Gray" 
+                 Grid.Column="2" Grid.Row="1" Height="32" Margin="4, 4, 4, 4"/>
+        <TextBox x:Name="TxtCltAddr" Text="client address" Foreground="Gray" 
+                 Grid.Column="3" Grid.Row="1" Height="32" Margin="4, 4, 4, 4"/>
+
+        <TextBox x:Name="TxtCtcName" Text="contact name" Foreground="Gray" 
+                 Grid.Column="0" Grid.Row="2" Height="32" Margin="4, 4, 4, 4"/>
+        <TextBox x:Name="TxtCtcPhone" Text="contact phone" Foreground="Gray" 
+                 Grid.Column="1" Grid.Row="2" Height="32" Margin="4, 4, 4, 4"/>
+        <TextBox x:Name="TxtCtcEmail" Text="contact Email" Foreground="Gray" 
+                 Grid.Column="2" Grid.Row="2" Height="32" Margin="4, 4, 4, 4"/>
+        <TextBox x:Name="TxtRel" Text="relationship" Foreground="Gray" 
+                 Grid.Column="3" Grid.Row="2" Height="32" Margin="4, 4, 4, 4"/>
+
+        <ListView Grid.Row="3" Grid.ColumnSpan="4" x:Name="ListView" ItemsSource="{Binding}" Width="Auto" ItemClick="ListView_ItemClick" IsItemClickEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:clientListItem">
+                    <Grid Width="1100">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind cltID}" Grid.Column="0" HorizontalAlignment="center" Margin="4,2,2,4" 
+                                   VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri"/>
+
+                        <TextBlock Text="{x:Bind cltName}" Grid.Column="1" HorizontalAlignment="center" 
+                                   Margin="4,2,2,4" VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+
+                        <TextBlock Text="{x:Bind cltPhone}" Grid.Column="2" HorizontalAlignment="center" 
+                                   Margin="4,2,2,4" VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+
+                        <TextBlock Text="{x:Bind cltAddr}" Grid.Column="3" HorizontalAlignment="center" 
+                                   Margin="4,2,2,4" VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+
+
+                        <TextBlock Text="{x:Bind ctcName}" Grid.Column="4" HorizontalAlignment="center" 
+                                   Margin="4,2,2,4" VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+
+                        <TextBlock Text="{x:Bind ctcPhone}" Grid.Column="5" HorizontalAlignment="center" 
+                                   Margin="4,2,2,4" VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+
+                        <TextBlock Text="{x:Bind ctcEmail}" Grid.Column="6" HorizontalAlignment="center" 
+                                   Margin="4,2,2,4" VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+
+                        <TextBlock Text="{x:Bind relation}" Grid.Column="7" HorizontalAlignment="center" 
+                                   Margin="4,2,2,4" VerticalAlignment="center" Grid.Row="1" 
+                                   FontSize="20" TextWrapping="WrapWholeWords" FontFamily="Calibri" Foreground="Gray"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ScrollViewer Grid.Row="4" Grid.ColumnSpan="6" VerticalScrollBarVisibility="Auto" >
+            <TextBlock x:Name="TxtAlert"  
+                   Text="Ready"
+                   FontSize="15" 
+                   Foreground="Gray"
+                   FontFamily="Calibri"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Center" 
+                   Margin="0, 0, 20, 0" 
+                   TextWrapping="WrapWholeWords"/>
+        </ScrollViewer>
+    </Grid>
+</Page>
