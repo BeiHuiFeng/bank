@@ -104,7 +104,7 @@ namespace newBank {
                 TxtAlert.Text = "Success to add an item! Click Query button to refresh.";
             }
             catch (MySqlException ex) {
-                TxtAlert.Text = "Fail to add a new item!\nError message: ";
+                TxtAlert.Text = "Fail to add a new item!\n Error message: ";
                 TxtAlert.Text += ex.Message;
             }
         }
